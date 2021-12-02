@@ -1,3 +1,5 @@
+#vid URL: https://www.youtube.com/watch?v=0sOvCWFmrtA
+
 from typing import Optional
 from fastapi import FastAPI
 from fastapi.param_functions import Body
@@ -14,13 +16,15 @@ class Post(BaseModel):
     rating: Optional[int] = None
 
 
+my_posts = [{"title": "title of post 1", "content": "content of post 1", "id": 1}, {"title": "favorite foods", "content": "me likey pizza", "id": 2}]
+
 @app.get("/")
 async def root():
     return {"message": "Welcome to my API"}
 
 @app.get("/posts")
 def get_posts():
-    return {"data: This is your post"}
+    return {"data": my_posts}
 
 @app.post("/posts")
 def create_posts(post: Post):
